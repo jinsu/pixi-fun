@@ -53,12 +53,12 @@
 
       function animate() {
         requestAnimFrame(animate);
+        count += 0.01;
         for (var i = 0; i < 100; i++) {
           var alien = aliens[i];
-          alien.rotation += 0.1;
+          alien.rotation += 0.5 * Math.cos(count) - Math.cos(count) * Math.sin(count);
         }
 
-        count += 0.01;
         alienContainer.scale.x = Math.sin(count);
         alienContainer.scale.y = Math.sin(count);
 
