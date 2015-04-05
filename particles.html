@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Particles</title>
+    <meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0" />
+    <script src="js/pixi-v2.2.7.js"></script>
+  </head>
+  <body>
+    <script>
+      var stage = new PIXI.Stage(0xFFFFFF);
+      var renderer = PIXI.autoDetectRenderer(1024, 768);
+      document.body.appendChild(renderer.view);
+
+      requestAnimFrame(animate);
+
+      var counter = 0;
+      function animate() {
+        requestAnimFrame(animate);
+        counter += 0.1;
+
+        bunny.rotation += Math.sin(counter);
+        bunny.position.x += Math.random(counter);
+        bunny.position.x = bunny.position.x % 1024;
+        bunny.position.y += 2*(Math.random(counter) - 0.5);
+
+        renderer.render(stage);
+      }
+
+      var bunny = new PIXI.Sprite.fromImage("assets/bunny.png");
+      bunny.anchor.x = 0.5;
+      bunny.anchor.y = 0.5;
+
+      bunny.position.x = 500;
+      bunny.position.y = 500;
+      stage.addChild(bunny);
+    </script>
+  </body>
+</html>
